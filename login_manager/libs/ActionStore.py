@@ -4,7 +4,7 @@ from login_manager.libs.metaclasses.Singleton import Singleton
 class ActionStore(metaclass=Singleton):
 
     def __init__(self):
-        self.shoulds = {}
+        self.__shoulds = {}
 
     def set_should_create_as_true(self):
         self.__set_should_as_true(self, 'create')
@@ -34,7 +34,7 @@ class ActionStore(metaclass=Singleton):
         return self.__should(self, 'designate_default')
 
     def clear(self):
-        self.shoulds.clear()
+        self.__shoulds.clear()
 
     # private methods
 
