@@ -1,4 +1,7 @@
-class ActionStore:
+from login_manager.libs.metaclasses.Singleton import Singleton
+
+
+class ActionStore(metaclass=Singleton):
 
     def __init__(self):
         self.shoulds = {}
