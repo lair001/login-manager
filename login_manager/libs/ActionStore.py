@@ -7,31 +7,31 @@ class ActionStore(metaclass=Singleton):
         self.__shoulds = {}
 
     def set_should_create_as_true(self):
-        self.__set_should_as_true(self, 'create')
+        self.__set_should_as_true('create')
 
     def set_should_create_as_false(self):
-        self.__set_should_as_false(self, 'create')
+        self.__set_should_as_false('create')
 
     def set_should_load_as_true(self):
-        self.__set_should_as_true(self, 'load')
+        self.__set_should_as_true('load')
 
     def set_should_load_as_false(self):
-        self.__set_should_as_false(self, 'load')
+        self.__set_should_as_false('load')
 
     def set_should_designate_default_as_true(self):
-        self.__set_should_as_true(self, 'designate_default')
+        self.__set_should_as_true('designate_default')
 
     def set_should_designate_default_as_false(self):
-        self.__set_should_as_false(self, 'designate_default')
+        self.__set_should_as_false('designate_default')
 
     def should_create(self):
-        return self.__should(self, 'create')
+        return self.__should('create')
 
     def should_load(self):
-        return self.__should(self, 'load')
+        return self.__should('load')
 
     def should_designate_default(self):
-        return self.__should(self, 'designate_default')
+        return self.__should('designate_default')
 
     def clear(self):
         self.__shoulds.clear()
