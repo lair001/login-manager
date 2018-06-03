@@ -48,5 +48,5 @@ class ActionStore(metaclass=Singleton):
         self.__set_should(action, False)
 
     def __should(self, action):
-        return self.shoulds[action]
+        return self.__shoulds.get(action, False)
 
