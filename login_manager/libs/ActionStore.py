@@ -39,7 +39,7 @@ class ActionStore(metaclass=Singleton):
     # private methods
 
     def __set_should(self, action, boolean):
-        self.shoulds[action] = boolean
+        self.__shoulds[action] = boolean
 
     def __set_should_as_true(self, action):
         self.__set_should(action, True)
