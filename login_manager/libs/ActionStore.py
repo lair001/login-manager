@@ -33,6 +33,9 @@ class ActionStore(metaclass=Singleton):
     def should_designate_default(self):
         return self.__should(self, 'designate_default')
 
+    def clear(self):
+        self.shoulds.clear()
+
     # private methods
 
     def __set_should(self, action, boolean):
