@@ -1,5 +1,5 @@
 import getopt, sys
-
+from login_manager.libs.ActionStore import ActionStore
 
 class ArgvProcessor:
 
@@ -20,6 +20,7 @@ class ArgvProcessor:
                 "-f": self.__f,
                 "-s": self.__s
             }
+            self.action_store = ActionStore()
         except getopt.GetoptError as err:
             print(err)
             sys.exit(2)
@@ -29,13 +30,13 @@ class ArgvProcessor:
             self.__opts_to_methods[opt](opt_arg)
 
     def __l(self, opt_arg):
-        print("loading")
+        self.action_store.set_should_load_as_true()
 
     def __c(self, opt_arg):
-        print("creating")
+        self.action_store.set_should_create_as_true()
 
     def __d(self, opt_arg):
-        print("designating default")
+        self.action_store.set_should_designate_default_as_true()
 
     def __u(self, opt_arg):
         print("user name")
