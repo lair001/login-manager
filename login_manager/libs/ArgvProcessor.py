@@ -1,5 +1,7 @@
 import getopt, sys
 from login_manager.libs.ActionStore import ActionStore
+from login_manager.libs.resources.Username import Username
+from login_manager.libs.resources.Resource import Resource
 
 class ArgvProcessor:
 
@@ -39,7 +41,10 @@ class ArgvProcessor:
         self.action_store.set_should_designate_default_as_true()
 
     def __u(self, opt_arg):
-        print("user name")
+        if self.action_store.should_load():
+            Username().load(opt_arg)
+        if self.action_store.should_designate_default():
+            Username().designate_default(opt_arg)
 
     def __h(self, opt_arg):
         print("host name")
