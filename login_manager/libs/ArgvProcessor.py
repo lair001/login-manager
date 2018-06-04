@@ -1,7 +1,6 @@
 import getopt, sys
 from login_manager.libs.ActionStore import ActionStore
 from login_manager.libs.resources.Username import Username
-from login_manager.libs.resources.Resource import Resource
 
 class ArgvProcessor:
 
