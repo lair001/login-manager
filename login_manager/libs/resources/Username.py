@@ -1,5 +1,4 @@
 from login_manager.libs.resources.Resource import Resource
-from login_manager.libs.metaclasses.Singleton import Singleton
 
 
 class Username(Resource):
