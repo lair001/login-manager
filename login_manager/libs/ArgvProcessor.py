@@ -9,19 +9,7 @@ class ArgvProcessor:
 
     def __init__(self):
         try:
-            self.opts, self.args = \
-                getopt.getopt(sys.argv[1:], self.__class__.opt_str)
-            self.__opts_to_methods = {
-                "-l": self.__l,
-                "-c": self.__c,
-                "-d": self.__d,
-                "-u": self.__u,
-                "-h": self.__h,
-                "-k": self.__k,
-                "-p": self.__p,
-                "-f": self.__f,
-                "-s": self.__s
-            }
+            self.opts, self.args = getopt.getopt(sys.argv[1:], self.__class__.opt_str)
             self.action_store = ActionStore()
         except getopt.GetoptError as err:
             print(err)
@@ -29,7 +17,7 @@ class ArgvProcessor:
 
     def process_options(self):
         for opt, opt_arg in self.opts:
-            self.__opts_to_methods[opt](opt_arg)
+            getattr(self, "_%s__%s" %(self.__class__.__name__, opt.replace('-', '')))(opt_arg)
 
     def __l(self, opt_arg):
         self.action_store.set_should_load_as_true()
