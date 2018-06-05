@@ -9,5 +9,8 @@ class Username(Resource):
     def load(self, username):
         self.username = username
 
+    def create(self):
+        super().create()
+
     def designate_default(self, username):
         self.load(username)

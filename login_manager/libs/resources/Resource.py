@@ -1,15 +1,17 @@
-from login_manager.libs.utils.Abstract import Abstract
-from login_manager.libs.metaclasses.Singleton import Singleton
+from login_manager.libs.metaclasses.AbstractSingleton import AbstractSingleton
+from abc import abstractmethod
 
-# Can't use ABC or ABCMeta with Singleton due to a metaclass conflict
-class Resource(Abstract, metaclass=Singleton):
+class Resource(metaclass=AbstractSingleton):
 
+    @abstractmethod
     def load(self):
        self.__default_action('load')
 
+    @abstractmethod
     def create(self):
        self.__default_action('create')
 
+    @abstractmethod
     def designate_default(self):
        self.__default_action('designate_default')
 
