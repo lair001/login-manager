@@ -6,6 +6,9 @@ class Username(Resource):
     def __init__(self):
         pass
 
+    def __str__(self):
+        return self.username_str
+
     def load(self, username_str):
         self.username_str = self.__class__.validate(username_str)
 
