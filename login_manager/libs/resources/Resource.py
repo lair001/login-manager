@@ -5,15 +5,16 @@ class Resource(metaclass=AbstractSingleton):
 
     @abstractmethod
     def load(self):
-       self.__default_action('load')
+       self.__class__.__default_action('load')
 
     @abstractmethod
     def create(self):
-       self.__default_action('create')
+       self.__class__.__default_action('create')
 
     @abstractmethod
     def designate_default(self):
-       self.__default_action('designate_default')
+       self.__class__.__default_action('designate_default')
 
-    def __default_action(self, action):
-        raise NotImplementedError("Action %s cannot be performed on %s." %(action, self.__class__.__name__))
+    @classmethod
+    def __default_action(cls, action):
+        raise NotImplementedError("Action %s cannot be performed on %s." %(action, cls.__name__))
