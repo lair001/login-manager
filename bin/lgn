@@ -2,7 +2,7 @@
 
 import os, sys
 
-PAR_DIR_PATH = os.path.realpath(__file__).replace(__file__.replace(os.curdir, ''), '')
+PAR_DIR_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
 sys.path.insert(0, PAR_DIR_PATH)
 
 from login_manager.LoginManager import LoginManager
