@@ -10,3 +10,9 @@ class LoginManager:
     def run(self):
         UserConfig()
         ArgvProcessor().process_options()
+
+def main():
+    LoginManager().run()
+
+if __name__ == "__main__":
+    main()

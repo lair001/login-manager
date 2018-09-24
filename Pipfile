@@ -4,8 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
+login-manager-tests = {editable = true, path = "./tests"}
+pytest = "*"
 
 [packages]
+login-manager = {editable = true, path = "./src"}
 
 [requires]
 python_version = "3.6"
