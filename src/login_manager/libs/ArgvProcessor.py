@@ -1,6 +1,9 @@
 import getopt, sys
 from login_manager.libs.ActionStore import ActionStore
 from login_manager.libs.resources.Username import Username
+from login_manager.libs.actions.Load import Load
+from login_manager.libs.actions.Create import Create
+from login_manager.libs.actions.DesignateDefault import DesignateDefault
 
 
 class ArgvProcessor:
@@ -10,7 +13,6 @@ class ArgvProcessor:
     def __init__(self):
         try:
             self.opts, self.args = getopt.getopt(sys.argv[1:], self.__class__.opt_str)
-            self.action_store = ActionStore()
         except getopt.GetoptError as err:
             print(err)
             sys.exit(2)
@@ -20,19 +22,16 @@ class ArgvProcessor:
             getattr(self, "_%s__%s" %(self.__class__.__name__, opt.replace('-', '')))(opt_arg)
 
     def __l(self, opt_arg):
-        self.action_store.set_should_load_as_true()
+        ActionStore().add(Load())
 
     def __c(self, opt_arg):
-        self.action_store.set_should_create_as_true()
+        ActionStore().add(Create())
 
     def __d(self, opt_arg):
-        self.action_store.set_should_designate_default_as_true()
+        ActionStore().add(DesignateDefault())
 
     def __u(self, opt_arg):
-        if self.action_store.should_load():
-            Username().load(opt_arg)
-        if self.action_store.should_designate_default():
-            Username().designate_default(opt_arg)
+        ActionStore().execute(Username(), opt_arg)
 
     def __h(self, opt_arg):
         print("host name")
